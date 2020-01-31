@@ -5,7 +5,15 @@
 }
 
 <h2>Update @Model.Name</h2>
+<a href="/Species/List">Back to List</a>
 <form method="POST" action="/Species/Update/@Model.SpeciesID">
-    <span>Species Name</span><input type="text" name="SpeciesName" id="SpeciesName" value="@Model.Name" />
-    <input type="submit" value="Update Species" />
+    <div class="row">
+        <div class="col-sm-1">Name:</div>
+        <div class="col-sm-1">
+            <input type="text" name="SpeciesName" id="SpeciesName" value="@Model.Name" />
+        </div>
+    </div>
+    <div class="row col-sm-1">
+        <input type="submit" value="Update Species" />
+    </div>
 </form>
