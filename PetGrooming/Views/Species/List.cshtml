@@ -1,0 +1,29 @@
+﻿@model List<PetGrooming.Models.Species>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Species List</h2>
+<table>
+    <thead>
+        <tr>
+            <th class="col-sm-1">Species Name</th>
+            <th class="col-sm-1">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ 
+            foreach (var species in @Model) {
+                <tr>
+                    <td class="col-sm-1"><a href="/Species/Show/@species.SpeciesID">@species.Name</a></td>
+                    <td class="col-sm-1">
+                        <form method="POST" action="/Species/Delete/@species.SpeciesID">
+                            <input id="submit" type="submit" value="Delete" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

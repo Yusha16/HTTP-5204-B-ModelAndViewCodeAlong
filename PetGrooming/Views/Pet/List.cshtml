@@ -1,0 +1,37 @@
+﻿@model List<PetGrooming.Models.Pet>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Pets</h2>
+<a href="/Pet/New">Add a new Pet</a>
+
+<table>
+    <thead>
+        <tr>
+            <th class="col-sm-1">Pet Name</th>
+            <th class="col-sm-1">Species Name</th>
+            <th class="col-sm-1">Weight(Kg)</th>
+            <th class="col-sm-1">Update</th>
+            <th class="col-sm-1">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ 
+            foreach (var Pet in Model) {
+            <tr>
+                <td class="col-sm-1"><a href="/Pet/Show/@Pet.PetID">@Pet.PetName</a></td>
+                <td class="col-sm-1">@Pet.Species.Name</td>
+                <td class="col-sm-1">@Pet.Weight<span>Kg</span></td>
+                <td class="col-sm-1"><a href="/Pet/Update/@Pet.PetID">Update</a></td>
+                <td class="col-sm-1">
+                    <form method="POST" action="/Pet/Delete/@Pet.SpeciesID">
+                        <input id="submit" type="submit" value="Delete" />
+                    </form>
+                </td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>
