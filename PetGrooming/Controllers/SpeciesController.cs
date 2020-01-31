@@ -53,6 +53,8 @@ namespace PetGrooming.Controllers
             string query = "select * from species where speciesid=@SpeciesID";
             SqlParameter sqlparam = new SqlParameter("@SpeciesID", id);
 
+            Debug.WriteLine(query);
+
             //Get the Specific Species
             Species selectedSpecies = db.Species.SqlQuery(query, sqlparam).FirstOrDefault();
 
@@ -60,6 +62,9 @@ namespace PetGrooming.Controllers
             {
                 return HttpNotFound();
             }
+
+            //TODO:
+            //Must add a way to list out the Pets this Species is related to
 
             //Show the result
             return View(selectedSpecies);
@@ -74,9 +79,13 @@ namespace PetGrooming.Controllers
         [HttpPost]
         public ActionResult Add(string SpeciesName)
         {
+            Debug.WriteLine("Add Method is called (User click on submit button) and SpeciesName=" + SpeciesName);
+
             //The query to add a new Species
             string query = "insert into species (Name) values (@SpeciesName)";
             SqlParameter sqlparam = new SqlParameter("@SpeciesName", SpeciesName);
+
+            Debug.WriteLine(query);
 
             //Run the sql command
             db.Database.ExecuteSqlCommand(query, sqlparam);
@@ -87,9 +96,12 @@ namespace PetGrooming.Controllers
 
         public ActionResult Update(int id)
         {
+            Debug.WriteLine("Update Method is called and id=" + id);
             //Query statement to select the specific Species
             string query = "select * from species where SpeciesID = @SpeciesID";
             SqlParameter sqlparam = new SqlParameter("@SpeciesID", id);
+
+            Debug.WriteLine(query);
 
             //The query is returning a list, so we only want the first one
             Species selectedspecies = db.Species.SqlQuery(query, sqlparam).FirstOrDefault();
@@ -101,6 +113,8 @@ namespace PetGrooming.Controllers
         [HttpPost]
         public ActionResult Update(int id, string SpeciesName)
         {
+            Debug.WriteLine("Update Method is called (Click the submit button) id=" + id + " SpeciesName= " + SpeciesName);
+
             //Query statement to update the specific Species
             string query = "update species";
             query += " set Name = @SpeciesName";
@@ -109,6 +123,8 @@ namespace PetGrooming.Controllers
             SqlParameter[] sqlparams = new SqlParameter[2];
             sqlparams[0] = new SqlParameter("@SpeciesName", SpeciesName);
             sqlparams[1] = new SqlParameter("@SpeciesID", id);
+
+            Debug.WriteLine(query);
 
             //Execute query command
             db.Database.ExecuteSqlCommand(query, sqlparams);
@@ -128,6 +144,8 @@ namespace PetGrooming.Controllers
             query += " where SpeciesID = @SpeciesID";
 
             SqlParameter sqlparam = new SqlParameter("@SpeciesID", id);
+
+            Debug.WriteLine(query);
 
             //Execute query command
             db.Database.ExecuteSqlCommand(query, sqlparam);
