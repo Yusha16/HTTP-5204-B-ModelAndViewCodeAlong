@@ -13,7 +13,9 @@
         <a href="/Pet/Update/@Model.PetID">Update</a>
     </div>
     <div class="col-sm-1">
-        <a href="/Pet/">Delete</a>
+        <form method="POST" action="/Pet/Delete/@Model.PetID">
+            <input id="submit" type="submit" value="Delete" />
+        </form>
     </div>
 </div>
 <div class="row">

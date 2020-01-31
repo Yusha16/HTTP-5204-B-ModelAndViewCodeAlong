@@ -12,7 +12,9 @@
         <a href="/Species/Update/@Model.SpeciesID">Update</a>
     </div>
     <div class="col-sm-1">
-        <a href="/Species/Delete">Delete</a>
+        <form method="POST" action="/Species/Delete/@Model.SpeciesID">
+            <input id="submit" type="submit" value="Delete" />
+        </form>
     </div>
 </div>
 <div class="row">

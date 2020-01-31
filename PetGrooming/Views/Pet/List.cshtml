@@ -6,7 +6,6 @@
 
 <h2>List of Pets</h2>
 <a href="/Pet/New">Add a new Pet</a>
-
 <table>
     <thead>
         <tr>
@@ -26,7 +25,7 @@
                 <td class="col-sm-1">@Pet.Weight<span>Kg</span></td>
                 <td class="col-sm-1"><a href="/Pet/Update/@Pet.PetID">Update</a></td>
                 <td class="col-sm-1">
-                    <form method="POST" action="/Pet/Delete/@Pet.SpeciesID">
+                    <form method="POST" action="/Pet/Delete/@Pet.PetID">
                         <input id="submit" type="submit" value="Delete" />
                     </form>
                 </td>
