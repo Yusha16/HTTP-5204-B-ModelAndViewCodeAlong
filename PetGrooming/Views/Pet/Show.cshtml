@@ -5,11 +5,30 @@
 }
 
 <h2>Show Pet</h2>
-<a href="/Pet/List">Back to List</a><br /><br />
-<a href="/Pet/Update/@Model.PetID">Update</a><br /><br />
-<a href="/Pet/">Delete</a>
-
-<div>Name : @Model.PetName</div>
-<div>Weight : @Model.Weight</div>
-<div>Species : @Model.Species.Name</div>
-<div>Notes: @Model.Notes</div>
+<div class="row">
+    <div class="col-sm-2">
+        <a href="/Pet/List">Back to List</a>
+    </div>
+    <div class="col-sm-1">
+        <a href="/Pet/Update/@Model.PetID">Update</a>
+    </div>
+    <div class="col-sm-1">
+        <a href="/Pet/">Delete</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-1">Name :</div>
+    <div class="col-sm-1">@Model.PetName</div>
+</div>
+<div class="row">
+    <div class="col-sm-1">Weight :</div>
+    <div class="col-sm-1">@Model.Weight</div>
+</div>
+<div class="row">
+    <div class="col-sm-1">Species :</div>
+    <div class="col-sm-1">@Model.Species.Name</div>
+</div>
+<div class="row">
+    <div class="col-sm-1">Notes :</div>
+    <div class="col-sm-1">@Model.Notes</div>
+</div>

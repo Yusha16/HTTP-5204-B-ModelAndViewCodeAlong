@@ -8,26 +8,50 @@
 <h2>Update</h2>
 <a href="/Pet/List">Back to List</a>
 <form action="/Pet/Update/@Model.pet.PetID" method="POST">
-    <span>Pet Name</span><input type="text" value="@Model.pet.PetName" id="PetName" name="PetName" /><br />
-    <span>Pet Color</span><input type="text" value="@Model.pet.Color" id="PetColor" name="PetColor" /><br />
-    <span>Pet Weight</span><input type="text" value="@Model.pet.Weight" id="PetWeight" name="PetWeight" /><br />
-    <span>Species: </span>
-    <select name="SpeciesID" id="SpeciesID">
-    @{ 
-        //Rendering Loop
-        foreach (var species in Model.species) {
-            string selected = "";
-            if (species.SpeciesID == Model.pet.SpeciesID)
-            {
-                selected = "selected";
-            }
-            <option value="@species.SpeciesID" @selected>@species.Name</option>
-        }
-    }
-    </select>
-    <div>
-        <span>Pet Notes</span>
-        <textarea id="PetNotes" name="PetNotes">@Model.pet.Notes</textarea>
+    <div class="row">
+        <div class="col-sm-1">Name:</div>
+        <div class="col-sm-1">
+            <input type="text" value="@Model.pet.PetName" id="PetName" name="PetName" />
+        </div>
     </div>
-    <input type="submit" value="update pet" />
+    <div class="row">
+        <div class="col-sm-1">Color:</div>
+        <div class="col-sm-1">
+            <input type="text" value="@Model.pet.Color" id="PetColor" name="PetColor" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1">Weight:</div>
+        <div class="col-sm-1">
+            <input type="text" value="@Model.pet.Weight" id="PetWeight" name="PetWeight" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1">Species:</div>
+        <div class="col-sm-1">
+            <select name="SpeciesID" id="SpeciesID">
+                @{
+                    //Rendering Loop
+                    foreach (var species in Model.species)
+                    {
+                        string selected = "";
+                        if (species.SpeciesID == Model.pet.SpeciesID)
+                        {
+                            selected = "selected";
+                        }
+                        <option value="@species.SpeciesID" @selected>@species.Name</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>  
+    <div class="row">
+        <div class="col-sm-1">Notes:</div>
+        <div class="col-sm-1">
+            <textarea id="PetNotes" name="PetNotes">@Model.pet.Notes</textarea>
+        </div>
+    </div>
+    <div class="row col-sm-1">
+        <input type="submit" value="update pet" />
+    </div>
 </form>

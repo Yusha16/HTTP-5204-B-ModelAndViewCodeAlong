@@ -4,7 +4,8 @@
     ViewBag.Title = "List";
 }
 
-<h2>Species List</h2>
+<h2>List of Species</h2>
+<a href="/Species/Add">Add a new Species</a>
 <table>
     <thead>
         <tr>
@@ -13,8 +14,9 @@
         </tr>
     </thead>
     <tbody>
-        @{ 
-            foreach (var species in @Model) {
+        @{
+            foreach (var species in @Model)
+            {
                 <tr>
                     <td class="col-sm-1"><a href="/Species/Show/@species.SpeciesID">@species.Name</a></td>
                     <td class="col-sm-1">
